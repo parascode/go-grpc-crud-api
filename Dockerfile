@@ -1,0 +1,4 @@
+# FROM postgres:13
+# ENV POSTGRES_DB=companydb
+# ENV POSTGRES_USER=user
+# ENV POSTGRES_PASSWORD=password

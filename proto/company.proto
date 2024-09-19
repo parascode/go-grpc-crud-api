@@ -1,0 +1,66 @@
+
+syntax="proto3";
+
+package proto;
+
+option go_package="example.com/go-grpc-crud-api";
+
+message Company {
+    string id =1;
+    string name = 3;
+    string address = 2;
+    string location = 4;
+}
+
+message CreateCompanyRequest {
+    Company company = 1;
+}
+
+message CreateCompanyResponse {
+    Company company =1;
+}
+
+message ReadCompanyRequest {
+    string id = 1;
+}
+
+message ReadCompanyResponse {
+    Company company = 1;
+}
+
+
+message ReadCompaniesRequest {
+    int64 pageSize = 1;
+    string pageToken = 2;
+}
+
+
+message ReadCompaniesResponse {
+    repeated Company companies = 1;
+    string nextPageToken = 2;
+}
+
+message UpdateCompanyRequest{
+    Company company = 1;
+}
+
+message UpdateCompanyResponse {
+    Company company = 1;
+}
+
+message DeleteCompanyRequest{
+    string id = 1;
+}
+
+message DeleteCompanyResponse{
+    bool success = 1;
+}
+
+service CompanyService {
+    rpc CreateCompany(CreateCompanyRequest) returns (CreateCompanyResponse) {}
+    rpc GetCompany(ReadCompanyRequest) returns (ReadCompanyResponse) {}
+    rpc GetCompanies(ReadCompaniesRequest) returns (ReadCompaniesResponse) {}
+    rpc UpdateCompany(UpdateCompanyRequest) returns (UpdateCompanyResponse) {}
+    rpc DeleteCompany(DeleteCompanyRequest) returns (DeleteCompanyResponse) {}
+}
+
